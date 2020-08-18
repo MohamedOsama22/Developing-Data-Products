@@ -1,0 +1,40 @@
+---
+title: "Week 2 Assignment"
+author: "Mohamed Osama"
+date: "8/18/2020"
+output: pdf_document
+---
+
+
+# Instructions:      
+Create a web page using R Markdown that features a map created with Leaflet.   
+Host your webpage on either GitHub Pages, RPubs, or NeoCities.     
+Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet.      
+We would love to see you show off your creativity
+
+```{r}
+
+
+library(leaflet)
+
+my_map<-leaflet() %>%  addTiles()
+
+my_map <- my_map %>% addMarkers(lat=38.8976771, lng=-77.0367341,popup="POTUS' Office")
+
+WHIcon <- makeIcon(
+  iconUrl = "https://goo.gl/maps/DdjV3X5pzJ12",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+photoLink<-"<a href='https://goo.gl/maps/DdjV3X5pzJ12'>White House photo </a>"
+website<- "<a href='https://www.whitehouse.gov/'>The White House </a>"
+
+my_map <- my_map %>% addMarkers(lat=38.8976771, lng=-77.0367341,popup=photoLink)  %>% addPopups(lat=38.8976771, lng=-77.0367341, popup=photoLink,popupOptions(keepInView = T))
+ #how do you show both the photo and the website on popup?
+my_map
+```
+
+
+
+
